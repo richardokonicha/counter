@@ -15,6 +15,12 @@ class Counter extends Component {
     color: "red",
   };
 
+  // constructor() {
+  //   super();
+  //   console.log(this);
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
   render() {
     let classes = this.getBadgeClass();
 
@@ -22,7 +28,12 @@ class Counter extends Component {
       <div>
         <img src={this.imageUrl} alt="" />
         <span className={classes}>{this.formatValue()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.handleIncrement}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
         {this.state.tags.length === 0 && "Please add tags"}
         {this.renderTags()}
       </div>
@@ -40,6 +51,10 @@ class Counter extends Component {
       </ul>
     );
   }
+
+  handleIncrement = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
 
   getBadgeClass() {
     let classes = "badge m-2 badge-";
