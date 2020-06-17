@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    value: this.props.value,
     address: {
       street: "22 Jump str",
     },
@@ -23,6 +23,7 @@ class Counter extends Component {
 
   render() {
     let classes = this.getBadgeClass();
+    console.log("props", this.props);
 
     return (
       <div>
@@ -34,8 +35,8 @@ class Counter extends Component {
         >
           Increment
         </button>
-        {this.state.tags.length === 0 && "Please add tags"}
-        {this.renderTags()}
+        {/* {this.state.tags.length === 0 && "Please add tags"} */}
+        {/* {this.renderTags()} */}
       </div>
     );
   }
@@ -53,18 +54,18 @@ class Counter extends Component {
   }
 
   handleIncrement = () => {
-    this.setState({ count: this.state.count + 1 });
+    this.setState({ value: this.state.value + 1 });
   };
 
   getBadgeClass() {
     let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
+    classes += this.state.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatValue() {
-    const { count } = this.state;
-    return count === 0 ? <h1>Zero</h1> : <h1>{count}</h1>;
+    const { value } = this.state;
+    return value === 0 ? <h1>Zero</h1> : <h1>{value}</h1>;
   }
 }
 
