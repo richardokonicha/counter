@@ -2,7 +2,7 @@
 
 A React counter application
 
-![Counter](extra\Annotation.png)
+![Counter](./extra/Annotation.png)
 
 ## Available Scripts
 
