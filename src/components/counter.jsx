@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    value: this.props.value,
-    address: {
-      street: "22 Jump str",
-    },
-    imageUrl: "https://picsum.photos/200",
-    tags: ["tag1", "tag2", "tag3"],
-  };
+  // state = {
+  //   value: this.props.counter.value,
+  //   address: {
+  //     street: "22 Jump str",
+  //   },
+  //   imageUrl: "https://picsum.photos/200",
+  //   tags: ["tag1", "tag2", "tag3"],
+  // };
 
   styles = {
     fontSize: 90,
@@ -20,20 +20,26 @@ class Counter extends Component {
   //   console.log(this);
   //   this.handleIncrement = this.handleIncrement.bind(this);
   // }
-
   render() {
     let classes = this.getBadgeClass();
-    console.log("props", this.props);
-
+    // console.log("props", this.props.children);
     return (
       <div>
+        {/* {this.props.children} */}
+        {/* <h6>{this.props.id}</h6> */}
         <img src={this.imageUrl} alt="" />
         <span className={classes}>{this.formatValue()}</span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.props.onIncrement(this.props.counter)}
           className="btn btn-secondary btn-sm"
         >
           Increment
+        </button>
+        <button
+          onClick={() => this.props.onDelete(this.props.counter.id)}
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
         {/* {this.state.tags.length === 0 && "Please add tags"} */}
         {/* {this.renderTags()} */}
@@ -53,22 +59,20 @@ class Counter extends Component {
     );
   }
 
-  handleIncrement = () => {
-    this.setState({ value: this.state.value + 1 });
-  };
+  // handleIncrement = () => {
+  //   this.setState({ value: this.state.value + 1 });
+  // };
 
   getBadgeClass() {
     let classes = "badge m-2 badge-";
-    classes += this.state.value === 0 ? "warning" : "primary";
+    classes += this.props.counter.value === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatValue() {
-    const { value } = this.state;
+    const { value } = this.props.counter;
     return value === 0 ? <h1>Zero</h1> : <h1>{value}</h1>;
   }
 }
 
 export default Counter;
-
-// 1hour in
