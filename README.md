@@ -2,7 +2,7 @@
 
 A React counter application
 
-![Counter](./extra/Annotation.png)
+![Counter](https://github.com/konichar/counter/blob/master/extra/Annotation.png)
 
 ## Available Scripts
 
